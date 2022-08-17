@@ -48,7 +48,7 @@ class Horsedata(Dataset):
         jitter =0.3
         scale = min(w/iw,h/ih)
 
-        #测试模式
+        #正常模式
         if self.train == False:              
             #按小边等比例放缩
             nw = int(iw*scale)
@@ -62,7 +62,7 @@ class Horsedata(Dataset):
             new_mask.paste(mask, ((w-nw)//2, (h-nh)//2))
             return new_img, np.array(new_mask)
         
-        #训练模式
+        #数据增强模式
         #长宽比随机扭曲，随机尺度缩放(0.6,1)
         new_sc = iw/ih*self.rand(1-jitter,1+jitter)/self.rand(1-jitter,1+jitter)
         new_scale = self.rand(scale*0.6,scale)   
