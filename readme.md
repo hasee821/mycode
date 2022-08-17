@@ -64,7 +64,7 @@ weizmann_horse_db/
     python test.py
 
 - 详细说明见test文件中注释
-- 最佳模型在测试集上**mIoU**指数为**0.904** , **Boundary IoU**指数为**0.757**。
+- 最佳模型在测试集上**mIoU**指数为**0.940** , **Boundary IoU**指数为**0.757**。
 
 
 ## Permission and Disclaimer
