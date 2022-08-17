@@ -10,9 +10,11 @@ def IoU(predict,mask):                           #均交并比计算
     predict = predict.view(n,-1)
     mask = mask.view(n,-1)
 
-    intersection1 = (predict & mask).sum(1)
+    intersection1 = (predict & mask).sum(1)                #前景交并比
     union1 = (predict | mask).sum(1)
-    iou = intersection1 / union1
+    intersection0 = (~predict & ~mask).sum(1)              #背景交并比
+    union0 = (~predict | ~mask).sum(1)
+    iou = (intersection1 / union1 + intersection0 / union0)*0.5       #均交并比
     return iou.sum()
 
 

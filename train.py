@@ -32,7 +32,7 @@ def main():
     model=Deeplabv3p()
     cudnn.benchmark = True
     model = model.cuda()
-    model.load_state_dict(torch.load("model/freeze_model.pth"))                               #加载历史模型
+    #model.load_state_dict(torch.load("model/freeze_model.pth"))                               #加载历史模型
     
 
 
@@ -45,7 +45,7 @@ def main():
 
     另外由于采用数据增强后,更难拟合,miou上涨缓慢
     故本实验先采用数据增强训练集训练一遍,
-    再用原始训练集训练进行微调。最终测试集miou在0.9左右
+    再用原始训练集训练进行微调。最终测试集miou在0.93左右,调得最佳模型miou=0.94,biou=0.757
     '''
     train_loss_list = []
     train_miou_list = []
@@ -165,10 +165,10 @@ def main():
         print("test mIoU:%f\nbiou:%f" %(miou/test_num,biou/test_num))
         test_miou_list.append(miou/test_num)                      
         test_biou_list.append(biou/test_num)
-        if miou/test_num>0.9:
+        if miou/test_num>0.94:
             torch.save(model.state_dict(), 'model/bestmodel_%.3f_%.3f.pth'%(miou/test_num,biou/test_num))
 
-    torch.save(model.state_dict(), 'model/last_model.pth')
+    #torch.save(model.state_dict(), 'model/last_model.pth')
     
     #保存训练测试记录表格
     epoch_list = range(1,unfreeze_epoch+1)
