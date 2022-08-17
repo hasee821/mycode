@@ -50,7 +50,7 @@ weizmann_horse_db/
 
     python train.py
 
-- 测试集miou大于0.9模型保存到model下,训练过程中训练loss验证miou等参数随epoch变化曲线保存在log文件夹下
+- 测试集miou大于0.94模型保存到model下,训练过程中训练loss验证miou等参数随epoch变化曲线保存在log文件夹下
 - 要想从头开始训练请更改train文件，去除freeze部分的注释
 - 输入图片统一resize到224*224的大小输入网络
 - 具体参数调节及本人更多详细训练方法参见train文件中注释
