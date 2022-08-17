@@ -36,7 +36,7 @@ test_loader=DataLoader(
 model=Deeplabv3p()
 cudnn.benchmark=True
 model=model.cuda()
-model.load_state_dict(torch.load('model/bestmodel_0.904_0.757.pth'))           #载入最佳模型
+model.load_state_dict(torch.load('model/bestmodel_0.940_0.757.pth'))           #载入最佳模型
 model.eval()
 
 biou = 0
